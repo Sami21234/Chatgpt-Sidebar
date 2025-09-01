@@ -3,6 +3,7 @@
 A Local lightweight Chrome extension that adds a **right-side panel** in ChatGPT, showing a list of your questions/messages.  
 Quickly jump to any conversation message without endless scrolling. Boosts productivity and makes ChatGPT navigation much easier.  
 
+*✨Now works on Desktop (Chrome) & Mobile (Kiwi Browser)! 📱💻*
 ---
 
 ## ✨ Features
@@ -37,6 +38,17 @@ Quickly jump to any conversation message without endless scrolling. Boosts produ
 5. Select the folder containing this project  
 6. Open ChatGPT – the sidebar should appear on the right ✅  
 
+---
+## 📱 Mobile Support (Kiwi Browser)
+*Now works on mobile Devices too!🎉*
+1. Install Kiwi Browser(https://kiwibrowser.com/)
+2. Open Kiwi and go to:
+   ```
+   chrome://extensions/
+   ```
+3. Enable the Developer Mode
+4. *Tap "Load Unpacked" and Select the folder (ChatGPT-Sidebar)*
+5. Open ChatGPT in Kiwi Browser - the sidebar will appear on the right✅
 ---
 
 ## 🛠️ How It Works

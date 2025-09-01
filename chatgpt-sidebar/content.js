@@ -20,6 +20,7 @@ function createSidebar() {
      <button id ="toggleTheme" style = "margin-right:6px;" title="Toggle Dark/Light Mode"> 🌓 </button>
      <button id ="collapseSidebar" title="Collapse Sidebar" > ⏩ </button>
 
+
     </div>
   </div>
   
@@ -38,7 +39,7 @@ function createSidebar() {
       width: 260px;
       height: 100vh;
       background: var(--sidebar-bg) !important;
-      color: var(--sidebar-text) !important;
+      color: var(--sidebar-text);
       border-left: 1px solid var(--border);
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
       padding: 12px;
@@ -57,7 +58,7 @@ function createSidebar() {
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
-    color: var(--sidebar-text) !important;
+    color: var(--sidebar-text);
     background: transparent;
 }
 
@@ -76,21 +77,22 @@ function createSidebar() {
     font-size: 16px;
 }
 
-:root{
-  --sidebar-bg: #f7f7f8;
+ body {
+    --sidebar-bg: #f7f7f8;
     --sidebar-text: #222;
     --border: #ddd;
-    --hover-bg: #2a2222ff;
+    --hover-bg: #e4e4e7;
     --body-bg: #f7f7f8;
     --chat-text: #202123;
-}
+ }
 
 body.dark{
     --sidebar-bg: #202123;
     --sidebar-text: #e6e6e6;
     --border: #444;
-    --hover-bg: #555654ff;
-    // --hover-bg: #2a2b26;
+    /* --hover-bg: #555654ff; */
+    --hover-bg: #2a2b26;
+    /* --hover-bg: #2a2b26;  */
     --body-bg: #202123;
     --chat-text: #e6e6e6;
 }
@@ -114,7 +116,87 @@ body{
   
 #dragHandle:hover{
     background: rgba(0, 0, 0, 0.1);
-}`;
+}
+
+@media (max-width: 768px){
+    #mySidebar {
+        width: 180px !important;
+        font-size: 14px;
+    }
+
+    body{
+        margin-right: 180px !important;
+    }
+}
+
+@media (max-width: 500px){
+    #mySidebar {
+        transform: translateX(100%);
+    }
+    #mySidebar.show {
+        transform: translateX(0);
+    }
+    body{
+        margin-right: 0 !important;
+    }
+}
+
+    #mobileToggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+@media (max-width: 500px){
+    #mobileToggle {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    #questionList li {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px){
+    #mySidebar {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 500px){
+    #dragHandle {
+        display: none;
+    }
+}
+
+@media (max-width: 500px){
+    #mySidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        margin-right: 0 !important;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+    }
+
+    body{
+        margin-right: 0 !important;
+    }
+}
+
+`;
 
   // Adding this content to the page so it becomes visible through (body.appendChild)
   document.body.appendChild(style);
@@ -132,6 +214,21 @@ body{
     document.body.classList.toggle("dark");
   });
 }
+
+
+// Creating the toggle button separately
+const mobileToggle = document.createElement("button");
+mobileToggle.id = "mobileToggle";
+mobileToggle.title = "Open Sidebar";
+mobileToggle.textContent = "◀️";
+document.body.appendChild(mobileToggle);
+
+// Adding the event listener
+mobileToggle.addEventListener("click", () => {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.classList.toggle("show");
+});
+
 
 // Now putting messages in the sidebar list
 function updateSidebar() {
